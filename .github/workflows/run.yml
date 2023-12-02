@@ -1,0 +1,23 @@
+name: ci
+
+on: push
+
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    container:
+      image: debain:12
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: check system
+      run: |
+        lscpu
+
+    - name: run
+      run: |
+        cat /etc/os-release
+        bash scripts/build.sh
+
